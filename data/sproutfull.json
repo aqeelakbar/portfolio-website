@@ -1,0 +1,745 @@
+{
+  "blocks": [
+    {
+      "text": "Turning environmental reporting into a decision-support tool",
+      "type": "h1"
+    },
+    {
+      "text": "Role: UX Engineer / Product Designer\nScope: Research, product design, usability testing and front-end development\nProduct: B2B environmental footprinting platform",
+      "type": "p"
+    },
+    {
+      "text": "Sproutfull began as a tool for calculating environmental footprints. After the first MVP, stakeholder feedback exposed a bigger problem: producing the number was only useful if people could understand what was driving it and decide what to do next.",
+      "type": "p"
+    },
+    {
+      "text": "I helped turn that insight into a new product direction, working across research, product design and front-end development to evolve Sproutfull into a decision-support tool.",
+      "type": "p"
+    },
+    {
+      "text": "Calculate → Understand → Trust → Investigate → Decide",
+      "type": "p"
+    },
+    {
+      "alt": "Sproutfull reporting interface showing environmental results and decision-support information",
+      "height": 974,
+      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/008a6157-ce7f-421e-9568-2fd6db0e60cc/Frame+3.png?format=1500w",
+      "type": "image",
+      "width": 1363
+    },
+    {
+      "text": "02 - THE ORIGINAL PROBLEM",
+      "type": "p"
+    },
+    {
+      "text": "First, we had to make the calculation usable",
+      "type": "h2"
+    },
+    {
+      "text": "Environmental footprinting was a slow, specialist process. Sustainability teams worked across spreadsheets, exports and inconsistent source data. Before anyone could interpret a result, they had to collect, clarify and validate the information behind it.",
+      "type": "p"
+    },
+    {
+      "value": "20+",
+      "label": "manual steps",
+      "text": "across spreadsheets, exports and repeated clarification before a usable footprint appeared.",
+      "type": "stat"
+    },
+    {
+      "text": "To turn the operational difficulty into a clear product problem, we worked with sustainability specialists to define who the first MVP was for, what those users needed, what the product would and would not cover, and how we would recognise success.",
+      "type": "p"
+    },
+    {
+      "alt": "Problem-framing board defining target users, needs, MVP boundaries and success measures",
+      "caption": "Problem-framing exercise used to define the users, their needs, the boundaries of the first MVP and its success measures.",
+      "height": 925,
+      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/bd80ae14-d913-4495-972a-f3d618c86eda/Image+21-08-2026+at+17.36.png?format=1500w",
+      "type": "image",
+      "variant": "framing-figure",
+      "width": 890
+    },
+    {
+      "label": "What the framing clarified",
+      "text": "The first release had one focused job: make the calculation faster, structured, repeatable and easier to trace.",
+      "type": "insight"
+    },
+    {
+      "rows": [
+        ["More than 20 manual steps", "Around six structured actions"],
+        ["Results difficult to reproduce", "A repeatable calculation path"],
+        ["Sources separated from the result", "Source and context preserved"],
+        ["Heavy manual preparation", "Less work to reach a usable footprint"]
+      ],
+      "type": "comparison"
+    },
+    {
+      "text": "We shipped the first slice as a working calculation experience, giving stakeholders a structured way to reach and review the footprint inside the product.",
+      "type": "p"
+    },
+    {
+      "text": "The first MVP was about getting users to the number.",
+      "type": "h3"
+    },
+    {
+      "text": "03 - THE PIVOT",
+      "type": "p"
+    },
+    {
+      "text": "The number exposed a bigger question",
+      "type": "h2"
+    },
+    {
+      "text": "Once stakeholders could see the first working calculation experience, the conversation shifted. Two comments stayed with me:",
+      "type": "p"
+    },
+    {
+      "items": [
+        "“It would be interesting to see what we could do with this number.”",
+        "“How will this report influence the way we go?”"
+      ],
+      "type": "quotes"
+    },
+    {
+      "text": "The calculation was working. The experience was ending too early.",
+      "type": "h3"
+    },
+    {
+      "text": "The result still left people to determine what mattered, what was driving it, how much confidence to place in it and where to look next.",
+      "type": "p"
+    },
+    {
+      "text": "There was no new brief. I treated the feedback as a product signal, returned to the research and reconsidered the wider job surrounding the calculation.",
+      "type": "p"
+    },
+    {
+      "headings": ["First MVP", "New direction"],
+      "rows": [
+        ["Reach the footprint", "Understand what it means"],
+        ["Produce the result", "Identify what is driving it"],
+        ["Review the calculation", "Follow the evidence"],
+        ["Finish at the number", "Decide where to focus"]
+      ],
+      "type": "comparison"
+    },
+    {
+      "text": "The number became the starting point, not the destination.",
+      "type": "h3"
+    },
+    {
+      "text": "That became the pivot from calculation towards decision support.",
+      "type": "p"
+    },
+    {
+      "text": "04 - DOMAIN LEARNING",
+      "type": "p"
+    },
+    {
+      "text": "Learning the domain and finding the bigger need",
+      "type": "h3"
+    },
+    {
+      "text": "To act on the signal responsibly, I needed to understand what the environmental result could and could not support.",
+      "type": "p"
+    },
+    {
+      "text": "What I needed to understand",
+      "type": "h4"
+    },
+    {
+      "items": [
+        ["Lifecycle stages", "Where environmental impact occurs across a product’s lifecycle."],
+        ["Scopes", "How Scope 1, 2 and 3 shape the result and its interpretation."],
+        ["Dependencies", "How formulas, data coverage and source quality affect confidence."],
+        ["Limits", "What the result could reasonably support and where uncertainty remained."]
+      ],
+      "type": "evidence-grid",
+      "variant": "topics"
+    },
+    {
+      "alt": "Synthesised journey comparing Sproutfull with the sustainability team's existing footprinting process",
+      "caption": "The synthesised journey connected the calculation workflow, emotional friction and opportunities for decision support. Select the image to inspect the full map.",
+      "height": 1231,
+      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/4b1b75b6-a2c3-4f24-9555-600483b01a36/Sproutfull+vs+Vreugenhil+-+Synthesised+As+is+user+journey.jpg",
+      "type": "image",
+      "variant": "domain-map",
+      "width": 1500,
+      "zoom": true
+    },
+    {
+      "text": "How I tested the direction",
+      "type": "h4"
+    },
+    {
+      "items": [
+        ["Users", "Showed whether the experience and product questions made sense."],
+        ["Sustainability specialists", "Challenged the environmental interpretation and its boundaries."],
+        ["Implementation", "Exposed what the underlying data could actually support."]
+      ],
+      "type": "evidence-grid",
+      "variant": "validation"
+    },
+    {
+      "label": "What that changed",
+      "text": "The broader need was not another report. People needed to compare results, identify where impact was concentrated, explain the main drivers and decide where to investigate next.",
+      "type": "insight"
+    },
+    {
+      "text": "05 - PRODUCT REFRAMING",
+      "type": "p"
+    },
+    {
+      "text": "I redesigned the report around decisions",
+      "type": "h2"
+    },
+    {
+      "text": "I stopped thinking about the report as a page of environmental data and started designing around the questions someone would ask before making a judgement.",
+      "type": "p"
+    },
+    {
+      "items": [
+        "What is the result?",
+        "What deserves attention?",
+        "How reliable is it?",
+        "What evidence supports it?",
+        "Where did it come from?",
+        "What should I investigate next?"
+      ],
+      "type": "decision-questions"
+    },
+    {
+      "text": "I brought the interpretation needed for a next decision closer to the result.",
+      "type": "p"
+    },
+    {
+      "text": "Across Organisation, Location and Product, that meant surfacing hotspots, contributors, comparisons and evidence while preserving access to the calculation.",
+      "type": "p"
+    },
+    {
+      "alt": "Early Organisation report combining environmental metrics, scopes, locations, products and breakdown tables",
+      "caption": "Early Organisation concept. Brought the result, scopes, priority locations and contributors into one view, but asked the reader to process too much at once.",
+      "height": 1463,
+      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/aa110bf6-236f-4c33-b1ee-669402477faf/localhost_3000_ui_dashboard.png",
+      "type": "image",
+      "variant": "concept-primary",
+      "width": 1500
+    },
+    {
+      "alt": "Early Location report with environmental impact, Scope breakdown and main contributor information",
+      "caption": "Early Location concept. Connected the location result with its main Scope and contributor signals.",
+      "height": 1463,
+      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/ac406710-c76f-41fb-b5a9-85580f0624a1/localhost_3000_ui_locations_13075_utI",
+      "type": "image",
+      "variant": "concept-secondary",
+      "width": 1500
+    },
+    {
+      "alt": "Early Product report organised around lifecycle stages, hotspots and contributor analysis",
+      "caption": "Early Product concept. Introduced lifecycle stages, hotspots and contributor analysis around a selected product.",
+      "height": 1837,
+      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/5dff512d-33f0-41d6-875c-a014a5484fc4/localhost_3000_ui_products_473086_utI",
+      "type": "image",
+      "variant": "concept-secondary",
+      "width": 1425
+    },
+    {
+      "text": "These versions moved interpretation closer to the result, but useful information now competed for attention.",
+      "type": "p"
+    },
+    {
+      "label": "Design tension",
+      "text": "The model was becoming clearer. The hierarchy was not.",
+      "type": "insight"
+    },
+    {
+      "text": "The next challenge was hierarchy: reveal environmental complexity in the order someone needed it. That became the focus of usability testing.",
+      "type": "p"
+    },
+    {
+      "text": "06 - USABILITY TESTING",
+      "type": "p"
+    },
+    {
+      "text": "The direction held. The hierarchy changed.",
+      "type": "h2"
+    },
+    {
+      "text": "I ran a focused usability test with a member of Vreugdenhil’s sustainability team: could they identify what mattered, understand the priority, judge the result and know where to investigate next?",
+      "type": "p"
+    },
+    {
+      "text": "This was directional, not representative, evidence. I used it to identify structural friction and choose the next refinement.",
+      "type": "p"
+    },
+    {
+      "headings": ["What worked", "What created friction"],
+      "rows": [
+        ["The main priority was understood", "Trust information appeared too late"],
+        ["The participant followed the evidence trail", "The page was difficult to scan"],
+        ["Contributor breakdowns supported investigation", "Linked-product context felt too peripheral"]
+      ],
+      "type": "comparison",
+      "variant": "findings"
+    },
+    {
+      "text": "“If I don’t trust the data, why would I invest time in reading further?”",
+      "type": "quote"
+    },
+    {
+      "items": [
+        ["Scanability", "“I just want to be able to scan quickly where is the most impact.”"],
+        ["Context", "“The linked products I would put more central.”"]
+      ],
+      "type": "evidence-grid",
+      "variant": "signals"
+    },
+    {
+      "text": "I translated those signals into explicit changes to the reporting hierarchy:",
+      "type": "p"
+    },
+    {
+      "headings": ["Test signal", "Design response"],
+      "rows": [
+        ["Trust determined whether someone continued", "Move reliability earlier"],
+        ["The main impact needed to be immediately scannable", "Prioritise result and focus"],
+        ["Supporting explanation competed for attention", "Use progressive disclosure"],
+        ["Linked products helped explain location impact", "Bring product context into the main decision path"],
+        ["Evidence was useful but dense", "Focus the initial evidence trail"]
+      ],
+      "type": "comparison",
+      "variant": "responses"
+    },
+    {
+      "alt": "First revised Location report with a clearer priority, evidence trail and trust information",
+      "caption": "First revision after testing. Reliability moved earlier and the evidence trail became more explicit. The structure was clearer, but still exposed too much supporting information at once.",
+      "height": 2048,
+      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/2f0d1a7b-f0fe-4839-a60c-ce597fd717be/localhost_3000_ui_products_467592_utI",
+      "type": "image",
+      "variant": "test-revision",
+      "width": 1423
+    },
+    {
+      "text": "Reviewing the first revision against the feedback, I simplified the hierarchy again. The refined reporting sequence became:",
+      "type": "p"
+    },
+    {
+      "items": ["Result", "Focus", "Reliability", "Evidence", "Traceability", "Detailed inspection"],
+      "type": "hierarchy-sequence"
+    },
+    {
+      "text": "Each layer answered the next question while allowing supporting detail to remain available without competing with the primary decision.",
+      "type": "p"
+    },
+    {
+      "label": "What testing changed",
+      "text": "The decision journey worked. The interface needed to get out of its way.",
+      "type": "insight"
+    },
+    {
+      "text": "I moved from a page that explained everything at once to a sequence that revealed complexity when it became useful.",
+      "type": "p"
+    },
+    {
+      "text": "07 - TRUST & RELIABILITY",
+      "type": "p"
+    },
+    {
+      "text": "I made trust inspectable",
+      "type": "h2"
+    },
+    {
+      "text": "Moving reliability earlier solved only part of the problem. Trust was not one score: before acting, users needed to see the result’s limitations, why a priority was selected, where the data came from and how to verify it.",
+      "type": "p"
+    },
+    {
+      "rows": [
+        [
+          "Reliability",
+          "Can I use this result?",
+          "Confidence, coverage and known data issues"
+        ],
+        [
+          "Evidence",
+          "Why is this the priority?",
+          "Impact category, hotspot and main contributor"
+        ],
+        [
+          "Traceability",
+          "Where did it come from?",
+          "Source path, available data and calculation records"
+        ],
+        [
+          "Detailed inspection",
+          "Can I verify it?",
+          "Impact categories, lifecycle stages, contributors and calculated values"
+        ]
+      ],
+      "type": "trust-model"
+    },
+    {
+      "text": "I translated those questions into four layers, keeping the result scannable while revealing evidence and calculation detail progressively.",
+      "type": "p"
+    },
+    {
+      "alt": "Product report showing reliability, evidence, traceability and detailed calculation information",
+      "caption": "The Product report follows one path from a scannable result to the evidence and calculation detail behind it.",
+      "height": 3027,
+      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/f44c5c12-95d9-43cc-9d19-db92207ff421/localhost_3000_ui_products_1424751_utI",
+      "type": "image",
+      "variant": "trust-overview",
+      "width": 1500
+    },
+    {
+      "alt": "Reliability section showing confidence, lifecycle-stage coverage and data quality",
+      "caption": "Reliability makes the basis for confidence explicit: the dominant lifecycle stage, coverage and unresolved data issues.",
+      "height": 245,
+      "src": "/media/sproutfull/trust-reliability.png",
+      "type": "image",
+      "variant": "trust-detail",
+      "width": 748
+    },
+    {
+      "alt": "Evidence trail connecting the impact category to the hotspot and main contributor",
+      "caption": "Evidence explains why the current focus was selected, step by step.",
+      "height": 405,
+      "src": "/media/sproutfull/trust-evidence.png",
+      "type": "image",
+      "variant": "trust-detail",
+      "width": 730
+    },
+    {
+      "alt": "Traceability and detailed inspection controls for verifying the product result",
+      "caption": "Traceability and inspection keep the source path and underlying calculation available without competing with the main result.",
+      "height": 385,
+      "src": "/media/sproutfull/trust-verification.png",
+      "type": "image",
+      "variant": "trust-detail",
+      "width": 748
+    },
+    {
+      "text": "The same structure also needed to expose missing inputs, coverage gaps and assumptions when they were present. A cleaner interface could not come at the cost of hiding uncertainty.",
+      "type": "p"
+    },
+    {
+      "label": "Design principle",
+      "text": "The interface did not ask users to trust the number. It showed them why they might, what its limits were and where they could check it.",
+      "type": "insight"
+    },
+    {
+      "text": "08 - UX ENGINEERING",
+      "type": "p"
+    },
+    {
+      "text": "I carried the product model into code",
+      "type": "h2"
+    },
+    {
+      "text": "There was no point where design ended and implementation began. I stayed with the reporting model through React and TypeScript implementation, checking that what the interface claimed remained true when it met real data.",
+      "type": "p"
+    },
+    {
+      "text": "That meant carrying each product decision through a more specific implementation loop:",
+      "type": "p"
+    },
+    {
+      "items": [
+        "Product decision",
+        "Shared rule",
+        "Interface state",
+        "Regression test"
+      ],
+      "type": "workflow-chain"
+    },
+    {
+      "text": "The idea of a “main contributor” became a useful test of that approach. It looked like a simple UX label, but the product needed precise rules before the label could be trusted.",
+      "type": "p"
+    },
+    {
+      "headings": [
+        "Product decision",
+        "Implementation rule"
+      ],
+      "rows": [
+        [
+          "Identify the most meaningful contributor",
+          "Compare valid, positive, unrounded values within the correct hierarchy"
+        ],
+        [
+          "Do not misrepresent missing information",
+          "Treat a missing value as unknown, not as zero"
+        ],
+        [
+          "Preserve uncertainty",
+          "Keep equal leaders as joint leaders"
+        ],
+        [
+          "Keep contribution percentages trustworthy",
+          "Use the denominator that is valid for the reporting level"
+        ],
+        [
+          "Maintain consistency across reports",
+          "Reuse shared ranking logic while allowing hierarchy-specific behaviour"
+        ]
+      ],
+      "type": "comparison",
+      "variant": "implementation-rules"
+    },
+    {
+      "label": "Implementation proof",
+      "title": "The shared contract behind “main contributor”",
+      "items": [
+        ["candidate.value != null", "Missing data stays unknown rather than becoming zero."],
+        ["candidate.value > 0", "Only a meaningful positive contribution can lead."],
+        ["value === highestValue", "Equal values remain visible as joint leaders."],
+        ["percentage = value / validTotal", "Each reporting level uses its valid denominator."],
+        ["same cases × 3 routes", "Regression coverage protects Organisation, Location and Product." ]
+      ],
+      "type": "engineering-evidence"
+    },
+    {
+      "text": "I implemented the shared logic across Organisation, Location and Product, then validated the cases most likely to make the interface say something misleading:",
+      "type": "p"
+    },
+    {
+      "items": [
+        [
+          "Missing values",
+          "Missing does not become zero"
+        ],
+        [
+          "Zeroes",
+          "Only meaningful positive values can lead"
+        ],
+        [
+          "Ties",
+          "Equal leaders remain visible"
+        ],
+        [
+          "Hierarchy",
+          "Comparison follows the valid reporting context"
+        ],
+        [
+          "Denominators",
+          "Percentages use the correct total"
+        ],
+        [
+          "Consistency",
+          "Shared rules keep their meaning across reports"
+        ]
+      ],
+      "type": "evidence-grid",
+      "variant": "validation"
+    },
+    {
+      "text": "I used Codex to audit existing ranking paths, refactor shared logic and generate regression cases. It increased the breadth and speed of validation, but it did not decide what the product rules should mean.",
+      "type": "p"
+    },
+    {
+      "label": "UX engineering value",
+      "text": "The work was not finished when the label looked right. The implementation also had to make sure it remained true.",
+      "type": "insight"
+    },
+    {
+      "text": "09 - PRODUCT SYSTEM",
+      "type": "p"
+    },
+    {
+      "text": "Making the learning reusable",
+      "type": "h3"
+    },
+    {
+      "text": "As the reporting model matured, I wanted the reasoning behind it to survive beyond individual screens and individual contributors.",
+      "type": "p"
+    },
+    {
+      "text": "Organisation became the first reference implementation. Once that model stabilised, I used the same product questions to shape Location and Product rather than redesigning each reporting level from scratch.",
+      "type": "p"
+    },
+    {
+      "items": [
+        "Product intent",
+        "UX rules",
+        "Interface patterns",
+        "Shipped experience"
+      ],
+      "type": "workflow-chain"
+    },
+    {
+      "text": "I captured the learning in three connected layers:",
+      "type": "p"
+    },
+    {
+      "text": "Product Book: Intent",
+      "type": "h4"
+    },
+    {
+      "text": "A plain-English reference for what Sproutfull is, the problem it addresses and the purpose of the reporting experience.",
+      "type": "p"
+    },
+    {
+      "alt": "Sproutfull Product Book documenting the intent behind the reporting model",
+      "caption": "The Product Book preserves the stakeholder narrative and intent behind the reporting model.",
+      "height": 1874,
+      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/11a5d8ab-ee81-4b36-894c-b6d4e2859160/localhost_3000_ui_product-book+%284%29.png",
+      "type": "image",
+      "width": 1500
+    },
+    {
+      "text": "Playbook: Rules",
+      "type": "h4"
+    },
+    {
+      "text": "The operational rules for hierarchy, reliability, evidence, traceability and inspection.",
+      "type": "p"
+    },
+    {
+      "alt": "Sproutfull Playbook documenting reusable product and UX rules",
+      "caption": "The Playbook turns product intent into reusable reporting and transparency rules.",
+      "height": 1874,
+      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/ae105cb3-358b-422c-a3a9-80485d4af4e4/localhost_3000_ui_product-book+%285%29.png",
+      "type": "image",
+      "width": 1500
+    },
+    {
+      "text": "Design system: Patterns",
+      "type": "h4"
+    },
+    {
+      "text": "The tokens, components and applied interface patterns that carry those rules into the product.",
+      "type": "p"
+    },
+    {
+      "alt": "Sproutfull Design System documenting reusable reporting interface patterns",
+      "caption": "The design system connects the rules to tokens, components and applied patterns.",
+      "height": 1875,
+      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/a5431d70-822c-46de-9e6a-fccecff19275/localhost_3000_ui_product-book+%286%29.png",
+      "type": "image",
+      "width": 1500
+    },
+    {
+      "text": "New reporting work could now start from an established product model rather than reopening the same structural questions each time.",
+      "type": "p"
+    },
+    {
+      "text": "Shared components and automated tests then helped protect those semantics in the implementation.",
+      "type": "p"
+    },
+    {
+      "text": "The aim was not to make every report identical. It was to preserve the same decision model while allowing Organisation, Location and Product to keep their own meaning.",
+      "type": "p"
+    },
+    {
+      "text": "10 - SHIPPED SYSTEM",
+      "type": "p"
+    },
+    {
+      "text": "The number became the starting point",
+      "type": "h2"
+    },
+    {
+      "text": "The working reporting experience now helps people move from an environmental result to what matters, why it matters and where to investigate.",
+      "type": "p"
+    },
+    {
+      "text": "Organisation, Location and Product now share the same decision logic while answering different questions.",
+      "type": "p"
+    },
+    {
+      "items": [
+        {
+          "alt": "Organisation comparison showing where impact is concentrated across locations",
+          "height": 400,
+          "label": "Organisation",
+          "question": "Where is impact concentrated, and where should we focus?",
+          "src": "/media/sproutfull/final-organisation.png",
+          "width": 720
+        },
+        {
+          "alt": "Location report tracing the main driver and linked product context",
+          "height": 400,
+          "label": "Location",
+          "question": "What is driving the footprint here?",
+          "src": "/media/sproutfull/final-location.png",
+          "width": 720
+        },
+        {
+          "alt": "Product report showing the main contributor and reliability information",
+          "height": 400,
+          "label": "Product",
+          "question": "What is contributing most to this footprint?",
+          "src": "/media/sproutfull/final-product.png",
+          "width": 720
+        }
+      ],
+      "type": "report-levels"
+    },
+    {
+      "label": "Shared model",
+      "text": "Each level uses the same foundation while keeping the evidence and next step relevant to its own context.",
+      "type": "insight"
+    },
+    {
+      "text": "11 - CONCLUSION",
+      "type": "p"
+    },
+    {
+      "text": "Early evidence and product direction",
+      "type": "h3"
+    },
+    {
+      "text": "The clearest early evidence came from the focused usability test; the product outcome was a shared reporting model implemented across all three levels.",
+      "type": "p"
+    },
+    {
+      "text": "One Vreugdenhil sustainability specialist could identify the main priority, understand why it had been selected and follow the evidence into the underlying contributors. They also connected the model to a practical commercial use case: identifying higher-impact products and considering lower-impact alternatives for customers.",
+      "type": "p"
+    },
+    {
+      "text": "The work established change at three levels:",
+      "type": "p"
+    },
+    {
+      "items": [
+        [
+          "For users",
+          "A footprint became something people could understand, question and investigate."
+        ],
+        [
+          "For the product",
+          "Organisation, Location and Product reports now support decisions beyond the calculation."
+        ],
+        [
+          "For the team",
+          "The three reporting levels now share a model supported by documentation, components and automated tests."
+        ]
+      ],
+      "type": "evidence-grid",
+      "variant": "outcomes"
+    },
+    {
+      "text": "What I learned",
+      "type": "h3"
+    },
+    {
+      "text": "The project changed how I think about complexity. Simplification did not mean hiding detail. It meant revealing the right detail in the order someone needed it.",
+      "type": "p"
+    },
+    {
+      "text": "The question that started the shift still sums up the project best:",
+      "type": "p"
+    },
+    {
+      "text": "What can we do with this number?",
+      "type": "h3"
+    },
+    {
+      "text": "That question established a new direction for Sproutfull: from a place that delivered a number to a tool people could think with.",
+      "type": "p"
+    },
+    {
+      "text": "Design System Adoption Tool - UX Research / Product Design",
+      "type": "h2"
+    }
+  ],
+  "title": "Sproutfull LCA Platform - UX Engineering / Product Design, Aqeel Akbar's Portfolio",
+  "url": "https://www.aqeelakbar.me/portfolio/sproutfull"
+}
