@@ -118,6 +118,11 @@ function createScan(){
 }
 
 function appendBlock(container,block,context){
+  if(block.type==='external-links'){
+    const group=document.createElement('div');group.className='case-external-links';
+    block.items.forEach(([labelText,href])=>{const link=document.createElement('a');link.className='explore';link.href=href;link.target='_blank';link.rel='noopener noreferrer';const label=document.createElement('span'),arrow=document.createElement('span');label.textContent=labelText;arrow.textContent='↗';link.append(label,arrow);group.append(link)});
+    container.append(group);return;
+  }
   if(block.type==='external-link'){
     const link=document.createElement('a');link.className='explore case-external-link';link.href=block.href;link.target='_blank';link.rel='noopener noreferrer';const label=document.createElement('span'),arrow=document.createElement('span');label.textContent=block.label;arrow.textContent='↗';link.append(label,arrow);container.append(link);return;
   }

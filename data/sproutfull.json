@@ -484,7 +484,7 @@
       "variant": "implementation-rules"
     },
     {
-      "label": "Implementation proof",
+      "label": "Inside the build",
       "title": "The shared contract behind “main contributor”",
       "items": [
         ["candidate.value != null", "Missing data stays unknown rather than becoming zero."],
