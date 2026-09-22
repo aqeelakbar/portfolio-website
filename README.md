@@ -1,6 +1,10 @@
 # Aqeel Akbar — portfolio website
 
-The source for [aqeelakbar.me](https://www.aqeelakbar.me), presenting product-design and UX-engineering work across complex workflows, design systems and AI-assisted products.
+The source for [my portfolio website](https://portfolio-website-chi-three-67.vercel.app), presenting product design and UX engineering work across complex workflows, design systems and AI-assisted products.
+
+![Aqeel Akbar portfolio preview](social-card.png)
+
+The site uses an editorial, chapter-based homepage to connect the product decisions in each case study with the interface work behind them. [Explore the portfolio](https://portfolio-website-chi-three-67.vercel.app) or [read the How Sure? case study](https://portfolio-website-chi-three-67.vercel.app/work/how-sure/).
 
 ## Why this is a static site
 
