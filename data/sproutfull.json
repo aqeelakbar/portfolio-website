@@ -23,7 +23,7 @@
     {
       "alt": "Sproutfull reporting interface showing environmental results and decision-support information",
       "height": 974,
-      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/008a6157-ce7f-421e-9568-2fd6db0e60cc/Frame+3.png?format=1500w",
+      "src": "/assets/sproutfull/01-frame-3.webp",
       "type": "image",
       "width": 1363
     },
@@ -53,7 +53,7 @@
       "alt": "Problem-framing board defining target users, needs, MVP boundaries and success measures",
       "caption": "Problem-framing exercise used to define the users, their needs, the boundaries of the first MVP and its success measures.",
       "height": 925,
-      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/bd80ae14-d913-4495-972a-f3d618c86eda/Image+21-08-2026+at+17.36.png?format=1500w",
+      "src": "/assets/sproutfull/02-image-21-08-2026-at-17-36.webp",
       "type": "image",
       "variant": "framing-figure",
       "width": 890
@@ -159,7 +159,7 @@
       "alt": "Synthesised journey comparing Sproutfull with the sustainability team's existing footprinting process",
       "caption": "The synthesised journey connected the calculation workflow, emotional friction and opportunities for decision support. Select the image to inspect the full map.",
       "height": 1231,
-      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/4b1b75b6-a2c3-4f24-9555-600483b01a36/Sproutfull+vs+Vreugenhil+-+Synthesised+As+is+user+journey.jpg",
+      "src": "/assets/sproutfull/03-sproutfull-vs-vreugenhil-synthesised-as-is-user-journe.webp",
       "type": "image",
       "variant": "domain-map",
       "width": 1500,
@@ -218,7 +218,7 @@
       "alt": "Early Organisation report combining environmental metrics, scopes, locations, products and breakdown tables",
       "caption": "Early Organisation concept. Brought the result, scopes, priority locations and contributors into one view, but asked the reader to process too much at once.",
       "height": 1463,
-      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/aa110bf6-236f-4c33-b1ee-669402477faf/localhost_3000_ui_dashboard.png",
+      "src": "/assets/sproutfull/04-localhost-3000-ui-dashboard.webp",
       "type": "image",
       "variant": "concept-primary",
       "width": 1500
@@ -227,7 +227,7 @@
       "alt": "Early Location report with environmental impact, Scope breakdown and main contributor information",
       "caption": "Early Location concept. Connected the location result with its main Scope and contributor signals.",
       "height": 1463,
-      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/ac406710-c76f-41fb-b5a9-85580f0624a1/localhost_3000_ui_locations_13075_utI",
+      "src": "/assets/sproutfull/05-localhost-3000-ui-locations-13075-uti.webp",
       "type": "image",
       "variant": "concept-secondary",
       "width": 1500
@@ -236,7 +236,7 @@
       "alt": "Early Product report organised around lifecycle stages, hotspots and contributor analysis",
       "caption": "Early Product concept. Introduced lifecycle stages, hotspots and contributor analysis around a selected product.",
       "height": 1837,
-      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/5dff512d-33f0-41d6-875c-a014a5484fc4/localhost_3000_ui_products_473086_utI",
+      "src": "/assets/sproutfull/06-localhost-3000-ui-products-473086-uti.webp",
       "type": "image",
       "variant": "concept-secondary",
       "width": 1425
@@ -312,7 +312,7 @@
       "alt": "First revised Location report with a clearer priority, evidence trail and trust information",
       "caption": "First revision after testing. Reliability moved earlier and the evidence trail became more explicit. The structure was clearer, but still exposed too much supporting information at once.",
       "height": 2048,
-      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/2f0d1a7b-f0fe-4839-a60c-ce597fd717be/localhost_3000_ui_products_467592_utI",
+      "src": "/assets/sproutfull/07-localhost-3000-ui-products-467592-uti.webp",
       "type": "image",
       "variant": "test-revision",
       "width": 1423
@@ -383,7 +383,7 @@
       "alt": "Product report showing reliability, evidence, traceability and detailed calculation information",
       "caption": "The Product report follows one path from a scannable result to the evidence and calculation detail behind it.",
       "height": 3027,
-      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/f44c5c12-95d9-43cc-9d19-db92207ff421/localhost_3000_ui_products_1424751_utI",
+      "src": "/assets/sproutfull/08-localhost-3000-ui-products-1424751-uti.webp",
       "type": "image",
       "variant": "trust-overview",
       "width": 1500
@@ -579,7 +579,7 @@
       "alt": "Sproutfull Product Book documenting the intent behind the reporting model",
       "caption": "The Product Book preserves the stakeholder narrative and intent behind the reporting model.",
       "height": 1874,
-      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/11a5d8ab-ee81-4b36-894c-b6d4e2859160/localhost_3000_ui_product-book+%284%29.png",
+      "src": "/assets/sproutfull/09-localhost-3000-ui-product-book-4.webp",
       "type": "image",
       "width": 1500
     },
@@ -595,7 +595,7 @@
       "alt": "Sproutfull Playbook documenting reusable product and UX rules",
       "caption": "The Playbook turns product intent into reusable reporting and transparency rules.",
       "height": 1874,
-      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/ae105cb3-358b-422c-a3a9-80485d4af4e4/localhost_3000_ui_product-book+%285%29.png",
+      "src": "/assets/sproutfull/10-localhost-3000-ui-product-book-5.webp",
       "type": "image",
       "width": 1500
     },
@@ -611,7 +611,7 @@
       "alt": "Sproutfull Design System documenting reusable reporting interface patterns",
       "caption": "The design system connects the rules to tokens, components and applied patterns.",
       "height": 1875,
-      "src": "https://images.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/a5431d70-822c-46de-9e6a-fccecff19275/localhost_3000_ui_product-book+%286%29.png",
+      "src": "/assets/sproutfull/11-localhost-3000-ui-product-book-6.webp",
       "type": "image",
       "width": 1500
     },
@@ -741,5 +741,5 @@
     }
   ],
   "title": "Sproutfull LCA Platform - UX Engineering / Product Design, Aqeel Akbar's Portfolio",
-  "url": "https://www.aqeelakbar.me/portfolio/sproutfull"
+  "url": "https://www.aqeelakbar.me/work/sproutfull/"
 }

@@ -182,7 +182,7 @@ function appendBlock(container,block,context){
     if(captionText){const caption=document.createElement('figcaption');caption.textContent=captionText;figure.append(caption)}container.append(figure);return;
   }
   if(block.type==='embed'){
-    const figure=document.createElement('figure');figure.className='case-figure';const video=document.createElement('video');video.src=block.src;video.controls=true;video.playsInline=true;video.preload='metadata';video.poster='https://video.squarespace-cdn.com/content/v1/67dc1386a3934742f1cb4d76/29c20d66-f718-49cd-97a1-91118f26a5f3/thumbnail';video.setAttribute('aria-label','TAG design system promotional video');figure.append(video);container.append(figure);return;
+    const figure=document.createElement('figure');figure.className='case-figure';const video=document.createElement('video');video.src=block.src;video.controls=true;video.playsInline=true;video.preload='metadata';video.setAttribute('aria-label','TAG design system promotional video');figure.append(video);container.append(figure);return;
   }
   if(block.type==='p'&&/^Role:/.test(block.text)){
     const match=block.text.match(/^Role:\s*(.*?)\s*Scope:\s*(.*?)\s*Product:\s*(.*)$/s);if(match){const dl=document.createElement('dl');dl.className='brief-facts';[['Role',match[1]],['Scope',match[2]],['Product',match[3]]].forEach(([name,value])=>{const row=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=name;dd.textContent=value;row.append(dt,dd);dl.append(row)});container.append(dl);return}
@@ -227,8 +227,7 @@ function makeDeepDive(title,blocks,label='Supporting detail'){
 }
 
 async function renderCase(){
-  if(!meta)return;document.title=meta.title+', Aqeel Akbar';
-  const description=document.querySelector('meta[name="description"]');if(description)description.content=meta.intro;
+  if(!meta)return;
   const response=await fetch('/data/'+slug+'.json');if(!response.ok)throw new Error('Content unavailable');const data=await response.json();
   let blocks=data.blocks.filter(block=>!(block.type==='h2'&&navHeadings.has(block.text))&&!(slug==='sproutfull'&&(block.type==='h1'||(block.type==='p'&&/^\d{2}\s*-\s*/.test(block.text))))).map(block=>meta.promote.includes(block.text)?{...block,type:'h2'}:block);
   const heroIndex=blocks.findIndex(block=>block.type==='image'),hero=heroIndex>=0?blocks[heroIndex]:null;if(heroIndex>=0)blocks.splice(heroIndex,1);
@@ -248,7 +247,7 @@ async function renderCase(){
     chapter++;const section=document.createElement('section');section.className='case-section';section.id=cleanId(segment.heading,chapter);const heading=document.createElement('h2');heading.textContent=segment.heading;heading.dataset.chapter='Chapter '+String(chapter).padStart(2,'0');section.append(heading);renderSegmentBlocks(section,segment.blocks,segment.heading);article.append(section);
     [rail,mobileMenu.querySelector('nav')].forEach(nav=>{const link=document.createElement('a');link.href='#'+section.id;link.textContent=String(chapter).padStart(2,'0')+', '+segment.heading;link.addEventListener('click',()=>{mobileMenu.open=false});nav.append(link)});
   });
-  const prev=meta.prev,next=meta.next;document.querySelector('#prevCase').href='/portfolio/'+prev+'/';document.querySelector('#prevTitle').textContent=LABELS[prev];document.querySelector('#nextCase').href='/portfolio/'+next+'/';document.querySelector('#nextTitle').textContent=LABELS[next];
+  const prev=meta.prev,next=meta.next;document.querySelector('#prevCase').href='/work/'+prev+'/';document.querySelector('#prevTitle').textContent=LABELS[prev];document.querySelector('#nextCase').href='/work/'+next+'/';document.querySelector('#nextTitle').textContent=LABELS[next];
   const allDetails=[...article.querySelectorAll('details.deep-dive')];if(expand&&allDetails.length)expand.addEventListener('click',()=>{const open=expand.getAttribute('aria-expanded')!=='true';allDetails.forEach(item=>item.open=open);expand.setAttribute('aria-expanded',String(open));expand.textContent=open?'Collapse supporting detail':'Expand all supporting detail'});else if(expand)expand.parentElement.remove();
   const reveal=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')}),{rootMargin:'0px 0px -8%'});[...article.children].forEach(element=>reveal.observe(element));
   const sections=[...article.querySelectorAll('.case-section')],links=[...rail.querySelectorAll('a')];const chapterObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)links.forEach(link=>link.classList.toggle('active',link.hash==='#'+entry.target.id))}),{rootMargin:'-20% 0px -65%'});sections.forEach(section=>chapterObserver.observe(section));

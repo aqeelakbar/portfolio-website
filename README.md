@@ -23,7 +23,7 @@ index.html                  Homepage narrative
 home.js                     Homepage motion and navigation
 case.js                     Shared case-study renderer
 data/                       Case-study content and structured evidence
-portfolio/                  Individual case-study entry points
+work/                       Individual case-study entry points
 site.css                    Layout, responsive behaviour and motion
 shared-header.js            Shared navigation and footer
 ```
