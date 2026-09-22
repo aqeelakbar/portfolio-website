@@ -1,5 +1,5 @@
 const HEADSHOT='/assets/profile/aqeel-akbar.webp';
-if(!document.querySelector('link[rel~="icon"]')){const favicon=document.createElement('link');favicon.rel='icon';favicon.href='/favicon.svg';favicon.type='image/svg+xml';document.head.append(favicon)}
+if(!document.querySelector('link[rel~="icon"]')){const favicon=document.createElement('link');favicon.rel='icon';favicon.href='/favicon-32.png?v=2';favicon.type='image/png';document.head.append(favicon)}
 function headerMarkup(current=''){
   const workIsCurrent=current==='work'&&!document.body.classList.contains('home');
   const brandLetters=[...'Hi, I’m Aqeel'].map((letter,index)=>`<span aria-hidden="true" style="--letter:${index}">${letter===' '?'&nbsp;':letter}</span>`).join('');

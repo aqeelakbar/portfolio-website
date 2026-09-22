@@ -41,10 +41,9 @@ const cases = {
   }
 };
 
-const icons = `<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">`;
+const icons = `<link rel="icon" href="/favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">`;
 
 for (const [slug, meta] of Object.entries(cases)) {
   const file = join(root, 'work', slug, 'index.html');
@@ -101,7 +100,7 @@ for (const relativeFile of ['index.html', 'about/index.html', 'contact/index.htm
   const file = join(root, relativeFile);
   let html = await readFile(file, 'utf8');
   html = html.replace(/<link rel="icon"[^>]*data:image[^>]*>\n?/, '');
-  if (!html.includes('href="/favicon.svg"')) {
+  if (!html.includes('href="/favicon.ico"')) {
     html = html.replace(/(<\/title>)/, `$1\n${icons}`);
   }
   await writeFile(file, html);
