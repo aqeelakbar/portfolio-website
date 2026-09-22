@@ -27,12 +27,27 @@
 <link rel="stylesheet" href="/site.css">
 <script src="/shared-header.js" defer>
 </script>
+<script src="/contact.js" defer>
+</script>
 </head>
 <body data-page="contact">
 <div data-site-header>
 </div>
 <main class="page-main" id="main">
 <section class="contact-hero">
+<svg class="contact-flight" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<path id="contact-flight-route" class="contact-flight__trail" pathLength="1" d="M-80 430C180 430 310 330 500 350C720 375 760 120 585 115C405 110 405 365 590 365C785 365 930 245 1280 180"/>
+<g class="contact-flight__plane">
+<g class="contact-flight__wobble">
+<path d="M-30 1 27-17 10 17-3 5-17 12Z"/>
+<path d="M-3 5 27-17M-3 5 10 17"/>
+<path class="contact-flight__accent" d="m-3 5 14-4"/>
+</g>
+<animateMotion id="contact-plane-motion" dur="5.6s" begin="indefinite" fill="freeze" rotate="auto">
+<mpath href="#contact-flight-route"/>
+</animateMotion>
+</g>
+</svg>
 <div>
 <div class="kicker">Contact</div>
 <h1>Let’s talk about making complex products easier to understand.</h1>
