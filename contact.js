@@ -8,6 +8,7 @@
 
   const idleDelay = 11000;
   const flightDuration = 6600;
+  const planeHeadingCorrection = -17;
   const previewMode = new URLSearchParams(window.location.search).has('plane');
   let idleTimer;
   let hasRun = false;
@@ -64,7 +65,7 @@
       const bank = 1 - loopAmount * 0.16;
       const lift = Math.sin(timeProgress * Math.PI * 5) * (1.2 - loopAmount * 0.5);
 
-      plane.setAttribute('transform', `translate(${point.x} ${point.y + lift}) rotate(${displayedAngle}) scale(1 ${bank})`);
+      plane.setAttribute('transform', `translate(${point.x} ${point.y + lift}) rotate(${displayedAngle + planeHeadingCorrection}) scale(1 ${-bank})`);
       trail.style.strokeDashoffset = String(1 - travelled);
       trail.style.opacity = String(Math.min(1, timeProgress / 0.08) * (timeProgress > 0.82 ? (1 - timeProgress) / 0.18 : 1));
 
