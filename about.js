@@ -4,6 +4,7 @@
   if (!runner || reduceMotion.matches) return;
 
   const idleDelay = 12000;
+  const previewMode = new URLSearchParams(window.location.search).has('dog');
   let idleTimer;
   let hasRun = false;
 
@@ -24,5 +25,9 @@
   });
 
   document.addEventListener('visibilitychange', resetIdleTimer);
-  resetIdleTimer();
+  if (previewMode) {
+    window.setTimeout(run, 450);
+  } else {
+    resetIdleTimer();
+  }
 })();
