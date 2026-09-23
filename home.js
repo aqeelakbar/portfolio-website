@@ -1,5 +1,6 @@
 const journey = document.querySelector('#journey');
 const world = document.querySelector('#world');
+const stage = world?.parentElement;
 const root = document.documentElement;
 const sceneEls = [...document.querySelectorAll('[data-scene]')];
 const timelinePoints = [...document.querySelectorAll('.timeline-point')];
@@ -122,7 +123,7 @@ function update() {
   const hasMoved = Math.max(0, scrollY - journey.offsetTop) > 16;
   document.body.classList.toggle('has-moved', hasMoved);
 
-  if (innerWidth <= 900 || reducedMotion.matches) {
+  if (innerWidth <= 900) {
     let active = 0;
     let best = Infinity;
     sceneEls.forEach((scene, index) => {
@@ -204,15 +205,22 @@ function animateScrollTo(destination, duration = 600) {
   scrollTween = requestAnimationFrame(frame);
 }
 
+function resetNativeHorizontalScroll() {
+  if (stage) stage.scrollLeft = 0;
+  if (document.scrollingElement) document.scrollingElement.scrollLeft = 0;
+}
+
 function setPositionInstant(index) {
   cancelScrollTween();
+  resetNativeHorizontalScroll();
   snapIndex = index;
   progress = sceneProgress(index);
   setWorkNav(isWorkScene(index));
   setActive(index);
   root.style.setProperty('--shift', `${-progress * maxShift()}px`);
   root.style.setProperty('--progress', progress);
-  scrollTo({ top: sceneScrollTop(index), behavior: 'auto' });
+  scrollTo({ top: sceneScrollTop(index), left: 0, behavior: 'auto' });
+  resetNativeHorizontalScroll();
   animateScenes();
 }
 
@@ -407,6 +415,7 @@ function runIntroTransition() {
 }
 
 function restoreInitialRoute() {
+  resetNativeHorizontalScroll();
   measure();
   if (location.hash === '#work') setPositionInstant(1);
   else queue();
