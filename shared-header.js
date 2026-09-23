@@ -9,6 +9,54 @@ function footerMarkup(){return `<footer class="site-footer"><span>© ${new Date(
 document.querySelector('[data-site-header]')?.replaceChildren(document.createRange().createContextualFragment(headerMarkup(document.body.dataset.page||'')));
 document.querySelector('[data-site-footer]')?.replaceChildren(document.createRange().createContextualFragment(footerMarkup()));
 
+const prefetchedNavigation=new Set();
+function prefetchNavigation(href){
+  let url;
+  try{url=new URL(href,location.href)}catch{return}
+  if(url.origin!==location.origin||url.protocol!=='http:'&&url.protocol!=='https:')return;
+  if(url.pathname===location.pathname&&url.search===location.search)return;
+  const pageUrl=url.pathname+url.search;
+  if(!prefetchedNavigation.has(pageUrl)){
+    prefetchedNavigation.add(pageUrl);
+    const page=document.createElement('link');
+    page.rel='prefetch';
+    page.href=pageUrl;
+    document.head.append(page);
+  }
+  const match=url.pathname.match(/^\/work\/([^/]+)\/?$/);
+  if(match){
+    const dataUrl='/data/'+match[1]+'.json';
+    if(!prefetchedNavigation.has(dataUrl)){
+      prefetchedNavigation.add(dataUrl);
+      const data=document.createElement('link');
+      data.rel='prefetch';
+      data.as='fetch';
+      data.href=dataUrl;
+      document.head.append(data);
+    }
+  }
+}
+
+function prefetchFromTarget(target){
+  const link=target.closest?.('a[href]');
+  if(link)prefetchNavigation(link.href);
+}
+
+document.addEventListener('pointerover',event=>prefetchFromTarget(event.target),{passive:true});
+document.addEventListener('focusin',event=>prefetchFromTarget(event.target));
+document.addEventListener('touchstart',event=>prefetchFromTarget(event.target),{passive:true});
+
+if('IntersectionObserver'in window){
+  const navigationObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting)return;
+      prefetchNavigation(entry.target.href);
+      navigationObserver.unobserve(entry.target);
+    });
+  },{rootMargin:'320px'});
+  document.querySelectorAll('a[href^="/"]').forEach(link=>navigationObserver.observe(link));
+}
+
 function initialiseHeadshotIdleMotion(){
   const headshot=document.querySelector('.topbar .headshot');
   const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
