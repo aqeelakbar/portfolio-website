@@ -232,7 +232,7 @@ async function renderCase(){
   let blocks=data.blocks.filter(block=>!(block.type==='h2'&&navHeadings.has(block.text))&&!(slug==='sproutfull'&&(block.type==='h1'||(block.type==='p'&&/^\d{2}\s*-\s*/.test(block.text))))).map(block=>meta.promote.includes(block.text)?{...block,type:'h2'}:block);
   const heroIndex=blocks.findIndex(block=>block.type==='image'),hero=heroIndex>=0?blocks[heroIndex]:null;if(heroIndex>=0)blocks.splice(heroIndex,1);
   document.querySelector('#caseEyebrow').textContent=meta.eyebrow;document.querySelector('#caseTitle').textContent=meta.title;document.querySelector('#caseIntro').textContent=meta.intro;
-  const heroImg=document.querySelector('#caseHeroImage');if(hero){heroImg.src=hero.src;heroImg.alt=hero.alt||meta.title+' project overview';if(hero.width>0&&hero.height>0){heroImg.width=hero.width;heroImg.height=hero.height}}
+  const heroImg=document.querySelector('#caseHeroImage');if(hero){heroImg.loading='eager';heroImg.decoding='async';heroImg.fetchPriority='high';heroImg.src=hero.src;heroImg.alt=hero.alt||meta.title+' project overview';if(hero.width>0&&hero.height>0){heroImg.width=hero.width;heroImg.height=hero.height}}
   const layout=document.querySelector('.case-layout');layout.before(createScan());
   const firstSection=blocks.findIndex(block=>block.type==='h2'),briefBlocks=firstSection>0?blocks.splice(0,firstSection):[];
   const segments=[];let segment=null;blocks.forEach(block=>{if(block.type==='h2'){segment={heading:block.text,blocks:[]};segments.push(segment)}else if(segment)segment.blocks.push(block);else briefBlocks.push(block)});
