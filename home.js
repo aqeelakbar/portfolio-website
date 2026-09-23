@@ -14,6 +14,10 @@ let raf = 0;
 let scrollTween = 0;
 let snapTimer = 0;
 let isAnimating = false;
+let journeyRange = 1;
+let worldMaxShift = 0;
+let sceneCenters = [];
+let sceneProgresses = [];
 
 const clamp = value => Math.min(1, Math.max(0, value));
 const smooth = value => value * value * (3 - 2 * value);
@@ -26,18 +30,26 @@ const settleEase = value => {
 sceneEls.forEach(scene => scene.setAttribute('tabindex', '-1'));
 journey.style.setProperty('--journey-height', `${sceneEls.length * 145}vh`);
 
+function measure() {
+  journeyRange = Math.max(1, journey.offsetHeight - innerHeight);
+  worldMaxShift = Math.max(0, world.scrollWidth - innerWidth);
+  sceneCenters = sceneEls.map(scene => scene.offsetLeft + scene.offsetWidth / 2);
+  sceneProgresses = sceneCenters.map(centre =>
+    clamp((centre - innerWidth / 2) / Math.max(1, worldMaxShift))
+  );
+  positionPoints();
+}
+
 function range() {
-  return Math.max(1, journey.offsetHeight - innerHeight);
+  return journeyRange;
 }
 
 function maxShift() {
-  return Math.max(0, world.scrollWidth - innerWidth);
+  return worldMaxShift;
 }
 
 function sceneProgress(index) {
-  const scene = sceneEls[index];
-  const shift = scene.offsetLeft + scene.offsetWidth / 2 - innerWidth / 2;
-  return clamp(shift / Math.max(1, maxShift()));
+  return sceneProgresses[index] ?? 0;
 }
 
 function sceneScrollTop(index) {
@@ -53,10 +65,10 @@ function positionPoints() {
 
 function animateScenes() {
   const viewportWidth = innerWidth;
+  const horizontalShift = progress * maxShift();
 
-  sceneEls.forEach(scene => {
-    const rect = scene.getBoundingClientRect();
-    const centre = rect.left + rect.width / 2;
+  sceneEls.forEach((scene, index) => {
+    const centre = (sceneCenters[index] ?? viewportWidth / 2) - horizontalShift;
     const offset = (centre - viewportWidth / 2) / (viewportWidth * 0.88);
     const presence = clamp(1 - Math.abs(offset));
 
@@ -192,6 +204,18 @@ function animateScrollTo(destination, duration = 600) {
   scrollTween = requestAnimationFrame(frame);
 }
 
+function setPositionInstant(index) {
+  cancelScrollTween();
+  snapIndex = index;
+  progress = sceneProgress(index);
+  setWorkNav(isWorkScene(index));
+  setActive(index);
+  root.style.setProperty('--shift', `${-progress * maxShift()}px`);
+  root.style.setProperty('--progress', progress);
+  scrollTo({ top: sceneScrollTop(index), behavior: 'auto' });
+  animateScenes();
+}
+
 function goTo(index, focus = false) {
   snapIndex = index;
   setWorkNav(isWorkScene(index));
@@ -257,7 +281,7 @@ addEventListener('touchstart', () => {
 
 addEventListener('resize', () => {
   cancelScrollTween();
-  positionPoints();
+  measure();
   queue();
 });
 
@@ -382,7 +406,19 @@ function runIntroTransition() {
   }, 1050);
 }
 
-positionPoints();
-if (location.hash === '#work') requestAnimationFrame(() => goTo(1));
-queue();
+function restoreInitialRoute() {
+  measure();
+  if (location.hash === '#work') setPositionInstant(1);
+  else queue();
+}
+
+measure();
+if (location.hash === '#work') {
+  requestAnimationFrame(restoreInitialRoute);
+  document.fonts?.ready?.then(() => requestAnimationFrame(restoreInitialRoute));
+  addEventListener('load', () => requestAnimationFrame(restoreInitialRoute), { once: true });
+  addEventListener('pageshow', () => requestAnimationFrame(restoreInitialRoute));
+} else {
+  queue();
+}
 requestAnimationFrame(runIntroTransition);
