@@ -760,3 +760,19 @@ html {scroll-padding-top:0}
 
 /* The final scene opens directly with its message, like the introduction. */
 .vertical-site .v-contact>.v-container {grid-template-rows:minmax(0,1fr) auto}
+
+/* Centre complete scene compositions independently of chapter labels. */
+@media(min-width:1101px) and (min-height:820px){
+ .vertical-site .v-section>.v-container {
+   position:relative;display:flex;flex-direction:column;justify-content:center;
+   align-items:stretch;gap:0;padding:110px 0 110px;
+ }
+ .vertical-site .v-scene-header {position:absolute;top:110px;left:0;right:0}
+ .vertical-site .v-hero-grid,.vertical-site .v-project-grid,
+ .vertical-site .v-selected-grid,.vertical-site .v-writing-grid,
+ .vertical-site .v-contact-grid {flex:0 0 auto;align-self:center;height:auto;padding-top:0;padding-bottom:0}
+ .vertical-site .v-project-copy {align-self:center}
+ .vertical-site .v-project-media {height:min(66svh,760px)}
+ .vertical-site .v-selected-grid,.vertical-site .v-writing-grid {align-self:center;align-items:start}
+ .vertical-site .v-contact .v-bottom {position:absolute;left:0;right:0;bottom:100px}
+}
