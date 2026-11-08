@@ -1,5 +1,6 @@
 /* Self-contained motion prototype; no live private data requests. */
 const introLink=new URLSearchParams(location.search).has('intro');
+document.documentElement.classList.toggle('intro-link',introLink);
 const chapters=[
 {name:'A year or so',eyebrow:'',title:'What’s it been like <em>working with me?</em>',sub:'Over the past year or so…',note:'',shape:'opening',duration:4200},
 {name:'Co-create',eyebrow:'',title:'Workshops to<br><em>co-create.</em><br>Plenty to talk through.',sub:'We brought people together to share perspectives, work through problems and shape what came next.',note:'',shape:'workshops',spokenNumber:'4',duration:6500},
