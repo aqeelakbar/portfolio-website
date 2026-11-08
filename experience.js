@@ -1,4 +1,5 @@
 /* Self-contained motion prototype; no live private data requests. */
+const introLink=new URLSearchParams(location.search).has('intro');
 const chapters=[
 {name:'A year or so',eyebrow:'',title:'What’s it been like <em>working with me?</em>',sub:'Over the past year or so…',note:'',shape:'opening',duration:4200},
 {name:'Co-create',eyebrow:'',title:'Workshops to<br><em>co-create.</em><br>Plenty to talk through.',sub:'We brought people together to share perspectives, work through problems and shape what came next.',note:'',shape:'workshops',spokenNumber:'4',duration:6500},
@@ -150,6 +151,7 @@ function cancelCopyTransition(){
 }
 async function go(i,instant=false){
   if(handoffInProgress)return;
+  $('introEndActions').hidden=true;
   const target=Math.max(0,Math.min(chapters.length-1,i));
   clearTimeout(morphTimer);
   const copy=document.querySelector('.stage .copy');
@@ -236,7 +238,10 @@ function end(){
   finished=true;paused=true;elapsed=chapters[current].duration;updateProgress();
   $('pause').textContent='↺';$('pause').setAttribute('aria-label','Replay introduction');
   // Hold the original portrait-and-particle scene before shrinking it into the header.
-  handoffTimer=setTimeout(revealPortfolio,reduce?0:350);
+  if(introLink){
+    $('introEndActions').hidden=false;
+    $('continuePortfolio').focus({preventScroll:true});
+  }else handoffTimer=setTimeout(revealPortfolio,reduce?0:350);
 }
 function tick(t){const delta=lastTime?Math.min(60,t-lastTime):0;lastTime=t;if(!paused&&!finished&&!morphing){elapsed+=delta;if(elapsed>=chapters[current].duration){if(current===chapters.length-1){elapsed=chapters[current].duration;end()}else go(current+1)}updateProgress()}draw();requestAnimationFrame(tick)}
 progress.style.gridTemplateColumns=`repeat(${chapters.length},minmax(0,1fr))`;
@@ -253,7 +258,8 @@ photo.addEventListener('load',showPortraitPhoto);
 if(photo.complete)showPortraitPhoto();
 photo.decode?.().then(showPortraitPhoto).catch(()=>{});
 photo.addEventListener('error',()=>{if(photo.dataset.fallback)return;photo.dataset.fallback='1';photo.src='https://www.aqeelakbar.me/assets/profile/aqeel-akbar.webp'});
-$('replayIntro').addEventListener('click',()=>{
+function replayIntroduction(){
+  $('introEndActions').hidden=true;
   clearTimeout(handoffTimer);clearTimeout(morphTimer);morphing=false;
   $('experience').hidden=false;
   $('experience').classList.remove('exiting');
@@ -264,6 +270,12 @@ $('replayIntro').addEventListener('click',()=>{
   $('pause').textContent='Ⅱ';$('pause').setAttribute('aria-label','Pause animation');
   window.scrollTo({top:0,behavior:'instant'});
   go(0);
+}
+$('replayIntro').addEventListener('click',replayIntroduction);
+$('replayExperience').addEventListener('click',replayIntroduction);
+$('continuePortfolio').addEventListener('click',()=>{
+  $('introEndActions').hidden=true;
+  revealPortfolio();
 });
 setIntroAccessibility(!reduce&&!document.documentElement.classList.contains('skip-intro'));
 if(reduce||document.documentElement.classList.contains('skip-intro')){paused=true;$('experience').hidden=true;document.body.classList.remove('intro-active');go(0)}else go(0,true);
