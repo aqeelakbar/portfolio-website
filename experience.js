@@ -186,15 +186,18 @@ async function go(i,instant=false){
   copyAnimation?.cancel();copyAnimation=null;
   morphing=false;
 }
-function revealPortfolio(){
+async function revealPortfolio(){
   if(handoffInProgress)return;
   handoffInProgress=true;
   clearTimeout(handoffTimer);
-  const stage=$('experience');
+  cancelCopyTransition();
+  const stage=$('experience'),cloud=stage.querySelector('.particle-art');
   const headerImage=$('headerPhoto'),headerLabel=$('headerLabel');
   const complete=()=>{
+    // Hide the whole intro before resetting any composited animation layers.
     stage.hidden=true;
-    [stage,portrait,headline].forEach(element=>element.getAnimations().forEach(animation=>animation.cancel()));
+    [stage,portrait,headline,cloud].filter(Boolean).forEach(element=>element.getAnimations().forEach(animation=>animation.cancel()));
+    if(cloud){cloud.style.visibility='';cloud.style.opacity='';}
     stage.classList.remove('exiting');
     document.body.classList.remove('intro-active');
     try{sessionStorage.setItem('aqeel-experiment-07-seen','yes')}catch{}
@@ -203,12 +206,8 @@ function revealPortfolio(){
     handoffInProgress=false;
   };
   if(reduce){complete();return;}
-
-  // Animate the ORIGINAL portrait and original headline. No second greeting
-  // or photo is introduced, so the particle portrait scene is retained.
   const move=(source,target)=>{
-    const from=source.getBoundingClientRect();
-    const to=target.getBoundingClientRect();
+    const from=source.getBoundingClientRect(),to=target.getBoundingClientRect();
     if(!from.height||!to.height)return null;
     return source.animate([
       {transform:'translate3d(0,0,0) scale(1)',transformOrigin:'top left'},
@@ -217,11 +216,20 @@ function revealPortfolio(){
   };
   stage.classList.add('exiting');
   const motions=[move(portrait,headerImage),move(headline,headerLabel)].filter(Boolean);
+  // Clear the cloud while the intro is still opaque. Its portrait-scene CSS
+  // otherwise overrides the generic exiting fade, leaving particles over text.
+  if(cloud){
+    const fade=cloud.animate([{opacity:1},{opacity:0}],{duration:180,easing:'ease-out',fill:'forwards'});
+    await fade.finished.catch(()=>{});
+    cloud.style.visibility='hidden';
+    cloud.style.opacity='0';
+  }
   const wash=stage.animate([
     {backgroundColor:'#ffffff'},
     {backgroundColor:'rgba(255,255,255,0)'}
-  ],{duration:650,delay:220,easing:'ease',fill:'forwards'});
-  Promise.allSettled([...motions.map(m=>m.finished),wash.finished]).then(complete);
+  ],{duration:420,easing:'ease',fill:'forwards'});
+  await Promise.allSettled([...motions.map(m=>m.finished),wash.finished]);
+  complete();
 }
 function end(){
   if(finished)return;
