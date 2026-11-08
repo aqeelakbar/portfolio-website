@@ -12,7 +12,7 @@ The portfolio is intentionally built with semantic HTML, CSS and small, focused 
 
 The implementation still handles several product-like behaviours:
 
-- a horizontally directed desktop narrative with an equivalent linear mobile reading order
+- a vertical chapter-based homepage with a skippable particle introduction
 - responsive project imagery whose order changes without duplicating content
 - progressive case-study navigation and reading progress
 - reusable JSON-driven case-study blocks
@@ -24,7 +24,11 @@ The implementation still handles several product-like behaviours:
 
 ```text
 index.html                  Homepage narrative
-home.js                     Homepage motion and navigation
+experience.js               Intro scenes, particles and portrait handoff
+vertical.js                 Vertical scrolling and chapter navigation
+vertical.css                Homepage layout and responsive behaviour
+portfolio-interactions.js   Homepage header micro-interactions
+home.js                     Archived horizontal homepage motion
 case.js                     Shared case-study renderer
 data/                       Case-study content and structured evidence
 work/                       Individual case-study entry points
@@ -44,7 +48,7 @@ Then open `http://localhost:8080`.
 
 ## Design and engineering notes
 
-The homepage and case studies are designed as one system. Desktop motion establishes pace and orientation; mobile removes the horizontal stage and preserves a conventional document flow. `prefers-reduced-motion` receives the same content without transition-dependent navigation.
+The homepage and case studies are designed as one system. Desktop motion establishes pace and orientation; mobile preserves a conventional document flow. `prefers-reduced-motion` receives the same content without transition-dependent navigation.
 
 Case studies are rendered from structured JSON instead of repeated page markup. This keeps headings, evidence patterns, comparison tables, engineering callouts and media behaviour consistent while allowing each project to retain its own narrative.
 
@@ -57,3 +61,7 @@ Before deployment:
 3. Open every case-study route and its previous/next navigation.
 4. Test keyboard focus, image dialogs and reduced-motion behaviour.
 5. Confirm canonical and social-image URLs match the production hostname.
+
+## Homepage variants
+
+The primary homepage uses vertical scrolling. `/?intro` forces the introduction for share links, while the standard URL plays it once per tab session. Reduced-motion preferences bypass the automatic introduction. The previous horizontal homepage remains available at `/horizontal/`.
