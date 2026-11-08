@@ -757,3 +757,6 @@ html {scroll-padding-top:0}
 .v-rail a[data-label]:after,.v-rail-track {display:none!important}
 .vertical-site .v-contact>.v-container {padding-bottom:130px}
 @media(max-width:760px){.v-rail{padding:6px 12px;justify-content:flex-start}.v-rail a{flex:0 0 auto;padding:0 12px}.v-nav-label{font-size:11px}.vertical-site .v-contact>.v-container{padding-bottom:110px}}
+
+/* The final scene opens directly with its message, like the introduction. */
+.vertical-site .v-contact>.v-container {grid-template-rows:minmax(0,1fr) auto}
