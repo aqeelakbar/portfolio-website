@@ -241,7 +241,6 @@ function end(){
   // Hold the original portrait-and-particle scene before shrinking it into the header.
   if(introLink){
     $('introEndActions').hidden=false;
-    $('continuePortfolio').focus({preventScroll:true});
   }else handoffTimer=setTimeout(revealPortfolio,reduce?0:350);
 }
 function tick(t){const delta=lastTime?Math.min(60,t-lastTime):0;lastTime=t;if(!paused&&!finished&&!morphing){elapsed+=delta;if(elapsed>=chapters[current].duration){if(current===chapters.length-1){elapsed=chapters[current].duration;end()}else go(current+1)}updateProgress()}draw();requestAnimationFrame(tick)}
