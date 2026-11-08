@@ -102,7 +102,7 @@ function draw(){
   p.dot.setAttribute('cy',baseY+(reduce?0:Math.cos(t*.81)*10));
  }
  for(let i=0;i<N;i++){
-  const p=particles[i];p.x+=(p.tx-p.x)*(reduce?1:.065);p.y+=(p.ty-p.y)*(reduce?1:.065);
+  const p=particles[i],blend=reduce?1:1-Math.exp(-delta*9);p.x+=(p.tx-p.x)*blend;p.y+=(p.ty-p.y)*blend;
   const w=reduce?0:Math.sin(cloudTime*.8+p.phase)*1.7;
   const isCloud=chapters[current].shape==='opening'||chapters[current].shape==='thread';
   particleDots[i].setAttribute('r',p.r*(isCloud?1:1.5));
@@ -133,7 +133,7 @@ function paintScene(){
   }
   eyebrow.textContent=c.eyebrow;
   headline.innerHTML=c.title;
-  headline.setAttribute('aria-label',(c.spokenNumber?c.spokenNumber+' ':'')+headline.innerText.replace(/\s+/g,' '));
+  headline.setAttribute('aria-label',(c.spokenNumber?c.spokenNumber+' ':'')+c.title.replace(/<br\s*\/?>/gi,' ').replace(/<[^>]+>/g,'').replace(/\s+/g,' '));
   headline.classList.toggle('tight',current!==chapters.length-1);
   sub.textContent=c.sub;
   note.textContent=c.note;
@@ -142,32 +142,49 @@ function paintScene(){
   setShape(c.shape);
   updateProgress();
 }
-function go(i,instant=false){
+let sceneTransition=0,copyAnimation=null;
+function cancelCopyTransition(){
+  sceneTransition++;
+  copyAnimation?.cancel();
+  copyAnimation=null;
+}
+async function go(i,instant=false){
   if(handoffInProgress)return;
   const target=Math.max(0,Math.min(chapters.length-1,i));
   clearTimeout(morphTimer);
   const copy=document.querySelector('.stage .copy');
-  copy?.getAnimations().forEach(a=>a.cancel());
+  const fromOpacity=copy?getComputedStyle(copy).opacity:'1';
+  cancelCopyTransition();
+  const transition=sceneTransition;
   morphing=false;
-  if(instant||reduce||target===current){current=target;elapsed=0;finished=false;paintScene();return;}
+  if(instant||reduce||target===current){
+    current=target;elapsed=0;finished=false;paintScene();
+    if(copy){copy.style.opacity='';copy.style.visibility='';}
+    return;
+  }
   morphing=true;
-  // Start moving the SAME 880 particles to the next graphic before swapping text.
-  // This keeps one visual object present across all eight chapters.
-  setShape(chapters[target].shape);
-  copy?.animate([
-    {opacity:1},
-    {opacity:0}
-  ],{duration:340,easing:'cubic-bezier(.55,0,.85,.35)',fill:'forwards'});
-  morphTimer=setTimeout(()=>{
-    current=target;elapsed=0;finished=false;
-    paintScene();
-    copy?.getAnimations().forEach(a=>a.cancel());
-    copy?.animate([
-      {opacity:0},
-      {opacity:1}
-    ],{duration:580,easing:'cubic-bezier(.16,1,.3,1)'});
-    morphing=false;
-  },330);
+  if(copy){
+    copyAnimation=copy.animate([{opacity:fromOpacity},{opacity:0}],{duration:180,easing:'ease-in',fill:'forwards'});
+    try{await copyAnimation.finished;}catch{return;}
+  }
+  if(transition!==sceneTransition||$('experience').hidden)return;
+  // Swap only after the old copy has finished fading. Explicit visibility
+  // prevents old composited text surviving the layout/font change in Safari.
+  if(copy){copy.style.opacity='0';copy.style.visibility='hidden';}
+  copyAnimation?.cancel();copyAnimation=null;
+  current=target;elapsed=0;finished=false;
+  paintScene();
+  await new Promise(requestAnimationFrame);
+  if(transition!==sceneTransition||$('experience').hidden)return;
+  if(copy){
+    copy.style.visibility='';
+    copyAnimation=copy.animate([{opacity:0},{opacity:1}],{duration:280,easing:'cubic-bezier(.22,.61,.36,1)',fill:'forwards'});
+    try{await copyAnimation.finished;}catch{return;}
+  }
+  if(transition!==sceneTransition)return;
+  if(copy)copy.style.opacity='';
+  copyAnimation?.cancel();copyAnimation=null;
+  morphing=false;
 }
 function revealPortfolio(){
   if(handoffInProgress)return;
@@ -216,7 +233,7 @@ function end(){
 function tick(t){const delta=lastTime?Math.min(60,t-lastTime):0;lastTime=t;if(!paused&&!finished&&!morphing){elapsed+=delta;if(elapsed>=chapters[current].duration){if(current===chapters.length-1){elapsed=chapters[current].duration;end()}else go(current+1)}updateProgress()}draw();requestAnimationFrame(tick)}
 progress.style.gridTemplateColumns=`repeat(${chapters.length},minmax(0,1fr))`;
 chapters.forEach((c,i)=>{const b=document.createElement('button');b.className='step';b.type='button';b.setAttribute('aria-label','Go to '+c.name);b.innerHTML='<span>'+c.name+'</span><div class="track"><div class="fill"></div></div>';b.addEventListener('click',()=>{paused=true;$('pause').textContent='▶';$('pause').setAttribute('aria-label','Resume animation');go(i)});progress.appendChild(b)});
-$('skip').addEventListener('click',()=>{clearTimeout(handoffTimer);finished=true;paused=true;$('experience').hidden=true;document.body.classList.remove('intro-active');try{sessionStorage.setItem('aqeel-experiment-07-seen','yes')}catch{};setIntroAccessibility(false);$('portfolio').focus({preventScroll:true})});
+$('skip').addEventListener('click',()=>{cancelCopyTransition();morphing=false;clearTimeout(handoffTimer);finished=true;paused=true;$('experience').hidden=true;document.body.classList.remove('intro-active');try{sessionStorage.setItem('aqeel-experiment-07-seen','yes')}catch{};setIntroAccessibility(false);$('portfolio').focus({preventScroll:true})});
 $('back').addEventListener('click',()=>{paused=true;$('pause').textContent='▶';$('pause').setAttribute('aria-label','Resume animation');go(current-1)});$('next').addEventListener('click',()=>{if(current===chapters.length-1){end();return}paused=true;$('pause').textContent='▶';$('pause').setAttribute('aria-label','Resume animation');go(current+1)});
 $('pause').addEventListener('click',()=>{if(finished){paused=false;finished=false;$('pause').textContent='Ⅱ';window.scrollTo({top:0,behavior:reduce?'instant':'smooth'});go(0);return}paused=!paused;$('pause').textContent=paused?'▶':'Ⅱ';$('pause').setAttribute('aria-label',paused?'Resume animation':'Pause animation')});
 const backdrop=$('backdrop');let priorFocus=null;function closeDialog(){backdrop.classList.remove('open');paused=backdrop.dataset.wasPaused==='true';$('pause').textContent=paused?'▶':'Ⅱ';if(priorFocus)priorFocus.focus()}
