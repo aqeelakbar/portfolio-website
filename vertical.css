@@ -776,3 +776,8 @@ html {scroll-padding-top:0}
  .vertical-site .v-selected-grid,.vertical-site .v-writing-grid {align-self:center;align-items:start}
  .vertical-site .v-contact .v-bottom {position:absolute;left:0;right:0;bottom:100px}
 }
+
+/* Optical balance for the closing scene, with its footer kept in place. */
+@media(min-width:1101px) and (min-height:820px){
+ .vertical-site .v-contact-grid {position:relative;top:-24px}
+}
